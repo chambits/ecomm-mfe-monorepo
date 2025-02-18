@@ -64,4 +64,3 @@ pnpm --filter cart dev
 - **Container**: Main application shell that integrates other microfrontends
 - **Products**: Handles product listing and display
 - **Cart**: Manages shopping cart functionality
-- **UI Package**: Shared component library
