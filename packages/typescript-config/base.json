@@ -1,19 +1,22 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "module": "ESNext",
+    "target": "ESNext",
     "declaration": true,
     "declarationMap": true,
     "esModuleInterop": true,
     "incremental": false,
     "isolatedModules": true,
     "lib": ["es2022", "DOM", "DOM.Iterable"],
-    "module": "NodeNext",
     "moduleDetection": "force",
-    "moduleResolution": "NodeNext",
     "noUncheckedIndexedAccess": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": true,
-    "target": "ES2022"
-  }
+    "strict": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules", "dist"]
 }
