@@ -1,8 +1,9 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
-const path = require("path");
+const { dependencies } = require("../package.json");
+const { merge } = require("webpack-merge");
+const commonConfig = require("./webpack.common");
 
-module.exports = {
+const devConfig = {
   entry: "./src/index.tsx",
   mode: "development",
   devServer: {
@@ -14,15 +15,6 @@ module.exports = {
   output: {
     publicPath: "auto",
   },
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        use: "ts-loader",
-        exclude: /node_modules/,
-      },
-    ],
-  },
   plugins: [
     new ModuleFederationPlugin({
       name: "products",
@@ -30,10 +22,17 @@ module.exports = {
       exposes: {
         "./ProductList": "./src/ProductList",
       },
-      shared: ["react", "react-dom"],
-    }),
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
+      shared: {
+        ...dependencies,
+        react: {
+          singleton: true,
+        },
+        "react-dom": {
+          singleton: true,
+        },
+      },
     }),
   ],
 };
+
+module.exports = merge(commonConfig, devConfig);
