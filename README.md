@@ -1,6 +1,6 @@
-# E-commerce Microfrontend Application
+# E-commerce Microfrontend Monorepo with Turborepo
 
-A modern e-commerce application built using microfrontend architecture with Module Federation.
+A modern e-commerce application built using microfrontend architecture with Module Federation, managed in a monorepo using Turborepo and pnpm workspaces.
 
 ## Project Structure
 
